@@ -5,10 +5,10 @@ from odoo import fields, models
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
     lead_stakeholder_ids = fields.One2many(
-        'crm.stakeholder',
-        'partner_id',
-        string='Stakeholder in Lead/Opportunity',
+        "crm.stakeholder",
+        "partner_id",
+        string="Stakeholder in Lead/Opportunity",
     )
