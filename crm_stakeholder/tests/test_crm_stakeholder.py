@@ -5,6 +5,9 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestCrmStakeholders(BaseCommon):
+    # Since 20.0, BaseCommon runs as a basic internal user
+    _test_user_groups = ("sales_team.group_sale_manager",)
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -14,7 +17,7 @@ class TestCrmStakeholders(BaseCommon):
                 "email": "bill.ionaire@example.com",
             }
         )
-        cls.stakeholder_role = cls.env["crm.stakeholder.role"].create(
+        cls.stakeholder_role = cls.env["project.stakeholder.role"].create(
             {
                 "name": "Investor",
             }

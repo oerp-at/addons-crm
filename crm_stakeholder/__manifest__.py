@@ -3,7 +3,7 @@
 
 {
     "name": "CRM Stakeholder",
-    "version": "19.0.1.0.1",
+    "version": "20.0.1.0.0",
     "category": "Customer Relationship Management",
     "website": "https://github.com/OCA/crm",
     "author": "Weboffice IT-Service und Marketing GmbH & Co KG,"
@@ -15,7 +15,7 @@
         "project_stakeholder",
     ],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/crm_lead_views.xml",
         "views/stakeholder_menu_views.xml",
         "views/res_partner_views.xml",
