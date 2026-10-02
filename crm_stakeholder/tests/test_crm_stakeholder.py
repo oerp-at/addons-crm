@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+# Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
+
+from odoo.addons.base.tests.common import BaseCommon
+
+
+class TestCrmStakeholders(BaseCommon):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.partner = cls.env["res.partner"].create(
+            {
+                "name": "Bill Ionaire",
+                "email": "bill.ionaire@example.com",
+            }
+        )
+        cls.stakeholder_role = cls.env["crm.stakeholder.role"].create(
+            {
+                "name": "Investor",
+            }
+        )
+        cls.lead = cls.env["crm.lead"].create(
+            {
+                "name": "Lead",
+            }
+        )
+        cls.crm_stakeholder = cls.env["crm.stakeholder"].create(
+            {
+                "role_id": cls.stakeholder_role.id,
+                "partner_id": cls.partner.id,
+                "lead_id": cls.lead.id,
+                "note": "Main lead investor",
+            }
+        )
+
+    def test_lead_has_stakeholders(self):
+        self.assertIn(self.crm_stakeholder, self.lead.stakeholder_ids)
+
+    def test_partner_is_stakeholder(self):
+        self.assertIn(self.crm_stakeholder, self.partner.lead_stakeholder_ids)
